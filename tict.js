@@ -36,7 +36,7 @@ boxes.forEach((box)=>{
 
             }
         }
-        if(gameNotFin() && !ansFound){
+        if(gameFin() && !ansFound){
             swal("Game Drawn","Try Again");
             disableButtons();
         }
@@ -48,11 +48,13 @@ reset.addEventListener("click",()=>{
     boxes.forEach((box)=>{
         box.innerHTML="";
         box.disabled=false;
+        box.classList.remove("button-boom");
     })
+    turnO=true;
 });
 
 
-let gameNotFin=()=>{
+let gameFin=()=>{
     let fin=true;
     boxes.forEach((box)=>{
         if(box.innerHTML=="") fin=false;
@@ -64,6 +66,7 @@ function disableButtons(){
     boxes.forEach((box)=>{
         box.disabled=true;
     });
+    turnO=true;
 }
 function check() {
     for(let pat of patterns){
@@ -71,7 +74,12 @@ function check() {
         let val2=boxes[pat[1]].innerText;
         let val3=boxes[pat[2]].innerText;
         if(val1!=""  &&  val2!="" && val3!=""){
-            if(val1===val2 && val2===val3) return true;
+            if(val1===val2 && val2===val3){
+                boxes[pat[0]].classList.add("button-boom");
+                boxes[pat[1]].classList.add("button-boom");
+                boxes[pat[2]].classList.add("button-boom");
+                return true;
+            }
         } 
     }
     return false;
