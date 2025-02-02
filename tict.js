@@ -24,17 +24,6 @@ boxes.forEach((box)=>{
         let ansFound=check();
         if (ansFound) {
             disableButtons();
-            if (turnO) {
-                Owins++;
-                if(Owins==1) swal("Player O Wins",`Player O Won ${Owins} Game`);
-                else swal("Player O Wins",`Player O Won ${Owins} Games`);
-
-            } else {
-                Xwins++;
-                if(Xwins==1) swal("Player X Wins",`Player X Won ${Xwins} Game`);
-                else swal("Player X Wins",`Player X Won ${Xwins} Games`);
-
-            }
         }
         if(gameFin() && !ansFound){
             swal("Game Drawn","Try Again");
@@ -78,6 +67,15 @@ function check() {
                 boxes[pat[0]].classList.add("button-boom");
                 boxes[pat[1]].classList.add("button-boom");
                 boxes[pat[2]].classList.add("button-boom");
+                if(val1=="X"){
+                    Xwins++;
+                    if(Xwins==1) swal("Player X Wins",`Player X Won ${Xwins} Game`);
+                    else swal("Player X Wins",`Player X Won ${Xwins} Games`);
+                }else{
+                    Owins++;
+                    if(Owins==1) swal("Player O Wins",`Player O Won ${Owins} Game`);
+                    else swal("Player O Wins",`Player O Won ${Owins} Games`);
+                }
                 return true;
             }
         } 
