@@ -51,13 +51,13 @@ let gameFin=()=>{
     return fin; 
 }
 
-function disableButtons(){
+let disableButtons=()=>{
     boxes.forEach((box)=>{
         box.disabled=true;
     });
     turnO=true;
 }
-function check() {
+let check=()=>{
     for(let pat of patterns){
         let val1=boxes[pat[0]].innerText;
         let val2=boxes[pat[1]].innerText;
