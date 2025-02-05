@@ -1,41 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
-body{
+body {
     background-color: #a3cef1;
     text-align: center;
     font-family: "Quicksand", serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh; 
+    margin: 0;
     overflow: hidden;
-
 }
 h1{
     color:#274c77;
     font-size: 6vmin;
 }
-.game{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.container{
-    height:70vmin;
+.container {
+    height: 70vmin;
     width: 70vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
-.main{
+
+.main {
     height: 60vmin;
     width: 60vmin;
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    top: 54%;
+    left: 51%;
+    transform: translate(-50%, -50%);
     gap: 1.5vmin;
 }
-.btn{
-    height:18vmin;
+.btn {
+    height: 18vmin;
     width: 18vmin;
     border: 2px solid #6096ba;
     border-radius: 0.6rem;
@@ -46,38 +42,42 @@ h1{
     color: #8b8c89;
 }
 
-.final{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap:2.5vmin;
-    height:6vmin;
-}
-
-#reset{
+#reset {
     border-radius: 0.4rem;
-    border: 2px solid #6096ba;
-    background-color: #6096ba;
-
+    border: 2px solid skyblue;
+    background-color: skyblue;
     width: 20vmin;
-    height:6vmin;
+    height: 6vmin;
     color: white;
-    font-size: 3vmin  ;   
+    font-size: 2.5vmin;
+    font-weight: bold;
+}
+#reset:hover{
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 .btn:hover{
     background-color:whitesmoke;
+    cursor: pointer;
 }
-#mid{
+#mid {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
     background-color: #e7ecef;
     padding: 20px;
-    width: 90vmin;
-    height:91vmin;
+    max-width: 90vmin;
+    max-height: 91vmin;
     border: 2px solid #e7ecef;
     border-radius: 1rem;
 }
 .button-boom{
     animation: xyz 1s infinite;
 }
+
+
 @keyframes xyz {
     0%{
         transform: scale(1.0);
@@ -89,8 +89,4 @@ h1{
         transform: scale(1.0);
     }
 }
-@media (max-width:768px) {
-    body{
-        padding-top: 30%;
-    }
-}
+
