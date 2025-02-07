@@ -186,15 +186,7 @@ closeOnClickOutside: false,
             return false;
         }
     }
-        let turnC=true;
-        setTimeout(computerMove,400);
-        boxes.forEach((box)=>{
-            box.addEventListener("click",()=>{
-                if(!turnC && box.innerText==""){
-                    HumanMove(box);
-                }
-            });
-        });
+       
 
         reset.addEventListener("click",()=>{
             boxes.forEach((box)=>{
@@ -206,6 +198,16 @@ closeOnClickOutside: false,
             turnC=true;
             setTimeout(computerMove,300);
         }); 
+
+        let turnC=true;
+        setTimeout(computerMove,400);
+        boxes.forEach((box)=>{
+            box.addEventListener("click",()=>{
+                if(!turnC && box.innerText==""){
+                    HumanMove(box);
+                }
+            });
+        });
 
 });
 
