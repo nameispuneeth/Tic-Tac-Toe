@@ -14,20 +14,23 @@ swal({
     content:{
         element:"p",
         attributes:{
-            innerText:"Enter The Mode Of Game",
-            style:"font-size:4vmin;font-weight:bold;color:#274c77",
+            innerText:"ENTER THE MODE OF GAME",
+            style:"font-size:3.4vmin;font-weight:bold;color:#274c77",
         },
+        className:"swal-one",
     },
 buttons :{
     btn1:{
        visible:true,
        text:"Vs Computer",
        value:"computer",
+       className:"Right",
     },
     btn2:{
         visible:true,
         text:"Vs Friend",
         value:"multiplayer",
+        className:"Left",
      }
 },
 closeOnClickOutside: false,
@@ -49,7 +52,6 @@ closeOnClickOutside: false,
                 }
                 if(gameFin() && !ansFound){
                     swal("Game Drawn","Try Again");
-                    disableButtons();
                 }
                 turnO=!turnO;
             })
@@ -89,8 +91,123 @@ closeOnClickOutside: false,
         }); 
     }
     else{
-        swal("You Clicked Vs Computer")
+        let Hwins=0,Cwins=0;
+        HumanMove=(box)=>{
+            box.innerText="O";
+            box.disabled=true;
+            if(check()){
+                Hwins++;
+                if(Hwins==1) swal("Human Wins",`Human Won 1 Game`);
+                else swal("Human Wins",`Human Won ${Hwins} Games`);
+                disableButtons();
+            }else{
+                turnC=true;
+                setTimeout(computerMove, 500);
+            }
+        }
+        IsOneMoveComp=()=>{
+            for(let pat of patterns){
+                let val1=boxes[pat[0]].innerText;
+                let val2=boxes[pat[1]].innerText;
+                let val3=boxes[pat[2]].innerText;
+                if(val1=="X" && val2=="X" && val3==""){
+                    boxes[pat[2]].innerText="X";
+                    return true;
+                }else if(val1=="X" && val3=="X" && val2==""){
+                    boxes[pat[1]].innerText="X";
+                    return true;
+                }else if(val2=="X" && val3=="X" && val1==""){
+                    boxes[pat[0]].innerText="X";
+                    return true;
+                }
+            }
+            return false;
+        }
+        IsOneMoveHum=()=>{
+            for(let pat of patterns){
+                let val1=boxes[pat[0]].innerText;
+                let val2=boxes[pat[1]].innerText;
+                let val3=boxes[pat[2]].innerText;
+                if(val1=="O" && val2=="O" && val3==""){
+                    boxes[pat[2]].innerText="X";
+                    return true;
+                }else if(val1=="O" && val3=="O" && val2==""){
+                    boxes[pat[1]].innerText="X";
+                    return true;
+                }else if(val2=="O" && val3=="O" && val1==""){
+                    boxes[pat[0]].innerText="X";
+                    return true;
+                }
+            }
+            return false;
+        }
+        randomMove=()=>{
+            let arr=[];
+            for(let box of boxes){
+                if(box.innerText==""){
+                    arr.push(box);
+                }
+            }
+            let len=arr.length;
+            let ind = Math.floor(Math.random() * len);
+            let box=arr[ind];
+            box.innerText="X";
+        }
+        computerMove=()=>{
+            turnC=false;
+            if(IsOneMoveComp()){
+                check();
+                Cwins++;
+                if(Cwins==1) swal("Computer Wins",`You Were Choked By Computer ${Cwins} Time`);
+                else swal("Computer Wins",`You Were Choked By Computer ${Cwins} Times`);
+                return;
+            }
+            else if(IsOneMoveHum()){
+            }
+            else{
+                randomMove();
+            }
+            if(gameFin() && !check()){
+                swal("Game Drawn","Try Again");
+            }
+        }
+
+        check=()=>{
+            for(let pat of patterns){
+                let val1=boxes[pat[0]].innerText;
+                let val2=boxes[pat[1]].innerText;
+                let val3=boxes[pat[2]].innerText;
+                if(val1==val2 && val2==val3 && val1!=""){
+                    boxes[pat[0]].classList.add("button-boom");
+                    boxes[pat[1]].classList.add("button-boom");
+                    boxes[pat[2]].classList.add("button-boom");
+                    return true;
+                }
+            }
+            return false;
+        }
     }
+        let turnC=true;
+        setTimeout(computerMove,400);
+        boxes.forEach((box)=>{
+            box.addEventListener("click",()=>{
+                if(!turnC && box.innerText==""){
+                    HumanMove(box);
+                }
+            });
+        });
+
+        reset.addEventListener("click",()=>{
+            boxes.forEach((box)=>{
+                box.innerHTML="";
+                box.disabled=false;
+                box.classList.remove("button-boom");
+
+            })
+            turnC=true;
+            setTimeout(computerMove,300);
+        }); 
+
 });
 
 let gameFin=()=>{

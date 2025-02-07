@@ -18,7 +18,18 @@ h1{
     height: 70vmin;
     width: 70vmin;
 }
+.swal-one{
+    background-color: red;
+}
+.Right{
+    float: left;
+    margin-right:5vmin;
 
+}
+.Left{
+    float: right;
+    margin-right:10vmin;
+}
 .main {
     height: 60vmin;
     width: 60vmin;
