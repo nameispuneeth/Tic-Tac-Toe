@@ -159,6 +159,7 @@ closeOnClickOutside: false,
                 Cwins++;
                 if(Cwins==1) swal("Computer Wins",`You Were Choked By Computer ${Cwins} Time`);
                 else swal("Computer Wins",`You Were Choked By Computer ${Cwins} Times`);
+                disableButtons();
                 return;
             }
             else if(IsOneMoveHum()){
