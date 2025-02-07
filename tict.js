@@ -17,17 +17,8 @@ swal({
             innerText:"ENTER THE MODE OF GAME",
             style:"font-size:3.4vmin;font-weight:bold;color:#274c77",
         },
-        className:"swal-one",
     },
 buttons :{
-    container: {
-        visible: false,
-        element: "div", // Container div for buttons
-        attributes: {
-            class: "button-container", // This is the class we use for flexbox
-        }
-    },
-
     btn1:{
        visible:true,
        text:"Vs Computer",
