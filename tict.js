@@ -20,17 +20,25 @@ swal({
         className:"swal-one",
     },
 buttons :{
+    container: {
+        visible: false,
+        element: "div", // Container div for buttons
+        attributes: {
+            class: "button-container", // This is the class we use for flexbox
+        }
+    },
+
     btn1:{
        visible:true,
        text:"Vs Computer",
        value:"computer",
-       className:"Right",
+       className:"comp",
     },
     btn2:{
         visible:true,
         text:"Vs Friend",
         value:"multiplayer",
-        className:"Left",
+        className:"hum",
      }
 },
 closeOnClickOutside: false,

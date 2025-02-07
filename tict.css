@@ -18,15 +18,13 @@ h1{
     height: 70vmin;
     width: 70vmin;
 }
-.swal-one{
-    background-color: red;
-}
-.Right{
+
+.comp{
     float: left;
     margin-right:5vmin;
 
 }
-.Left{
+.hum{
     float: right;
     margin-right:10vmin;
 }
@@ -101,3 +99,24 @@ h1{
     }
 }
 
+@media only screen and (max-width: 412px) and (max-height: 740px) {
+    .comp{
+        float:left;
+        margin-right:4vmin;
+    }
+    .hum{
+        float: right;
+        margin-right:5vmin;
+    }
+  }
+  
+  @media only screen and (max-width: 933px) and (orientation: landscape) {
+    .comp{
+        float:left;
+        margin-right:5vmin;
+    }
+    .hum{
+        float: right;
+        margin-right:21vmin;
+    }
+  }
