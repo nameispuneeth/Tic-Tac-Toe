@@ -23,13 +23,11 @@ buttons :{
        visible:true,
        text:"Vs Computer",
        value:"computer",
-       className:"comp",
     },
     btn2:{
         visible:true,
         text:"Vs Friend",
         value:"multiplayer",
-        className:"hum",
      }
 },
 closeOnClickOutside: false,
